@@ -1,0 +1,47 @@
+\input{./src/header.tex}
+
+
+\begin{circuitikz}[scale=1.0]
+% Intrinsic
+\coordinate (XY) at (0,0);
+\draw[color=green] ($(XY)+(0,0)$) -- ++(2,0);
+\draw[rectangle, anchor=north , draw=green, fill=green!20] ($(XY)+(0.2,0)$) rectangle ++(1.6,-1);
+\draw[color=red] ($(XY)+(0,3)$) -- ++(2,0);
+\draw[rectangle, anchor=north , draw=red, fill=red!20] ($(XY)+(0.2,3)$) rectangle ++(1.6,1);
+\draw[color=black, dashed, thick] ($(XY)+(0,1.5)$) -- ++(2,0);
+\node[anchor=west] at ($(XY)+(2,0)$) {$E_v$};
+\node[anchor=west] at ($(XY)+(2,3)$) {$E_c$};
+\node[anchor=west] at ($(XY)+(2,1.5)$) {$E_F$};
+\node[anchor=center, align=center] at ($(XY)+(1, -2)$) {a) Intrinsic};
+
+% n-type
+\coordinate (XY) at (4,0);
+\draw[color=green] ($(XY)+(0,0)$) -- ++(2,0);
+\draw[rectangle, anchor=north , draw=green, fill=green!20] ($(XY)+(0.2,0)$) rectangle ++(1.6,-1);
+\draw[color=red] ($(XY)+(0,3)$) -- ++(2,0);
+\draw[rectangle, anchor=north , draw=red, fill=red!20] ($(XY)+(0.2,3)$) rectangle ++(1.6,1);
+\draw[color=black, dashed, thick] ($(XY)+(0,2.5)$) -- ++(2,0);
+\draw[color=black,  thick] ($(XY)+(0,2.0)$) -- ++(2,0);
+\node[anchor=west] at ($(XY)+(2,0)$) {$E_v$};
+\node[anchor=west] at ($(XY)+(2,3)$) {$E_c$};
+\node[anchor=west] at ($(XY)+(2,2.5)$) {$E_F$};
+\node[anchor=west] at ($(XY)+(2,2.0)$) {$E_d$};
+\node[anchor=center, align=center] at ($(XY)+(1, -2)$) {b) n-type};
+
+% p-type
+\coordinate (XY) at (8,0);
+\draw[color=green] ($(XY)+(0,0)$) -- ++(2,0);
+\draw[rectangle, anchor=north , draw=green, fill=green!20] ($(XY)+(0.2,0)$) rectangle ++(1.6,-1);
+\draw[color=red] ($(XY)+(0,3)$) -- ++(2,0);
+\draw[rectangle, anchor=north , draw=red, fill=red!20] ($(XY)+(0.2,3)$) rectangle ++(1.6,1);
+\draw[color=black, dashed, thick] ($(XY)+(0,0.5)$) -- ++(2,0);
+\draw[color=black,  thick] ($(XY)+(0,1.0)$) -- ++(2,0);
+\node[anchor=west] at ($(XY)+(2,0)$) {$E_v$};
+\node[anchor=west] at ($(XY)+(2,3)$) {$E_c$};
+\node[anchor=west] at ($(XY)+(2,0.5)$) {$E_F$};
+\node[anchor=west] at ($(XY)+(2,1.0)$) {$E_a$};
+\node[anchor=center, align=center] at ($(XY)+(1, -2)$) {b) p-type};
+
+\end{circuitikz}
+
+\input{./src/footer.tex}

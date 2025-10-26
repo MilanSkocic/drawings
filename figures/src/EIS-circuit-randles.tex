@@ -1,0 +1,21 @@
+\input{./src/header.tex}
+
+\begin{circuitikz}[scale=1.0]
+\filldraw[fill=cyan, opacity=0.2, draw=cyan] (-1,-3) rectangle (6,3);
+\node[right]  at (0,-2) {Electrolyte};
+\filldraw[fill=gray, opacity=0.2, draw=gray] (6,-3) rectangle (10,3);
+\node[right]  at (8,-2) {Metal};
+\draw (0,0) to[R=$R_{el}$, *-*] (2,0)--++(0,1) to [R=$R_{ct}$] ++(2,0) to [R=$W_{ox}$] ++(2,0) --++(0,-1) --++(1,0);
+\draw (0,0) to[R=$R_{el}$, *-*] (2,0)--++(0,-1) to [cpe=$Q_{dl}$] ++(4,0) to [short, -*] ++(0,1);
+
+\node (Cbox) at (3,2) {$C^*_{ox}$}; 
+\node (Cbred) at (3,-2) {$C^*_{red}$}; 
+\node (Cox) at (5,2) {$C^0_{ox}$};
+\node (Cred) at (5,-2) {$C^0_{red}$};
+
+\draw[blue, very thick, ->] (Cbox) to (Cox);
+\draw[blue, very thick, ->] (Cbred) to (Cred);
+\draw[blue, very thick] (Cox) [out=-45, in=45, ->] to (Cred);
+\end{circuitikz}
+
+\input{./src/footer.tex}

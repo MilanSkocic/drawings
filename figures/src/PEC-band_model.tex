@@ -1,0 +1,25 @@
+\input{./src/header.tex}
+
+\begin{circuitikz}[scale=1.0]
+\small
+\draw[->] (0,-3) -- ++(0,6);
+\node[anchor=center, rotate=90] at (-0.25,0) {Electron Energy};
+
+\draw[dashed, thick] (0,0) -- ++(10,0);
+\node[draw=none, anchor=south] at (5,0.2) {Fermi Level: $E_F$};
+
+\node[rectangle, minimum height=1.5cm, anchor=south, draw=red, align=center, text width=2cm, fill=red!20] at (2, -0.2) {Conduction Band};
+\node[rectangle, minimum height=1.5cm, anchor=north, draw=green, align=center, text width=2cm, fill=green!20] at (2, 0.2) {Valence Band};
+\node[rectangle, minimum height=0.4cm, anchor=center, draw=orange, align=center, text width=2cm, fill=orange!20] at (2, 0.0) {};
+
+\node[rectangle, anchor=south, draw=red, align=center, text width=2cm, fill=red!20] at (5, 1.) {Conduction Band};
+\node[rectangle, anchor=north, draw=green, align=center, text width=2cm, fill=green!20] at (5, -1.) {Valence Band};
+
+\node[draw=none, anchor=south west, blue] at (9.2,+0.2) {Band Gap: $E_g$};
+\draw[<->, thick, blue,] (9,-1.5) -- ++(0,3);
+\node[rectangle, anchor=south , draw=red, align=center, text width=2cm, fill=red!20] at (9, 1.5) {Conduction Band};
+\node[rectangle, anchor=north , draw=green, align=center, text width=2cm, fill=green!20] at (9, -1.5) {Valence Band};
+
+\end{circuitikz}
+
+\input{./src/footer.tex}

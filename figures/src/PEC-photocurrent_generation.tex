@@ -1,0 +1,76 @@
+\input{./src/header.tex}
+
+\begin{circuitikz}[scale=1.0]
+
+% left n-type
+\coordinate (Ox) at (-2,0);
+\coordinate (Oy) at (0,0);
+\coordinate (O) at ($(Ox)+(Oy)$);
+\coordinate (xlen) at (-5,0);
+\coordinate (ylen) at (+0,4);
+\coordinate (wsc_x) at ($(Ox)+(-4,0)$);
+\coordinate (wsc_y) at ($(Oy)+(ylen)$);
+\coordinate (Ev_x) at ($(Ox)+(xlen)$);
+\coordinate (Ev_y) at ($(Oy)+(0,1)$);
+\coordinate (Ev) at ($(Ev_x)+(Ev_y)$);
+\coordinate (Ec_x) at ($(Ox)+(xlen)$);
+\coordinate (Ec_y) at ($(Ev_y)+(0,2)$);
+\coordinate (Ec) at ($(Ec_x)+(Ec_y)$);
+\coordinate (Ef_x) at ($(Ox)+(xlen)$);
+\coordinate (Ef_y) at ($(Ec_y)+(0,-0.5)$);
+\coordinate (Ef) at ($(Ef_x)+(Ef_y)$);
+
+\draw[-Stealth] (O) -- ($(O)+(xlen)$) node[at end, below] {$x$};
+\draw[-Stealth] (O) -- ($(O)+(ylen)$) node[at end, left] {$E$};
+\draw[Stealth-Stealth, blue, thick] ($(wsc_x)+(Ev_y)+(0.2,0)$) -- ($(wsc_x)+(Ec_y)+(0.2,0)$) node[midway, right] {$E_g$};
+\draw[red] (Ec) -- ($(wsc_x)+(Ec_y)$) node [at start, left] {$E_c$};
+\draw[red] ($(wsc_x)+(Ec_y)$) to[in=-165, out=0] ($(Ox)+(Ec_y)+(0,0.5)$);
+\draw[green] (Ev) -- ($(wsc_x)+(Ev_y)$) node [at start, left] {$E_v$};
+\draw[green] ($(wsc_x)+(Ev_y)$) to[in=-165, out=0] ($(Ox)+(Ev_y)+(0,0.5)$);
+\draw[dashed] (Ef) -- ($(Ox)+(Ef_y)$) node [at start, left] {$E_F$};
+\node[anchor=north, align=center, yshift=-0.5cm] at ($(Ox)!0.5!(xlen)$) {a) n-type};
+\draw[-Stealth, violet, thick] ($(Ox)+(Ev_y)+(-0.7,0.0)$) -- ($(Ox)+(Ec_y)+(-0.7,0.5)$) node[circle, draw, at start, below, inner sep=0] {+} node[inner sep=2,circle, draw, at end, above] {-};
+\draw[-Stealth, violet, thick] ($(Ox)+(Ev_y)+(-0.5, -0.1)$) -- ($(Ox)+(Ev_y)+(0.1,0.1)$) ;
+\draw[-Stealth, violet, thick] ($(Ox)+(Ec_y)+(-0.9,0.6)$) -- ($(Ox)+(Ec_y)+(-1.5,0.5)$) ;
+
+
+% right p-type
+\coordinate (Ox) at (2,0);
+\coordinate (Oy) at (0,0);
+\coordinate (O) at ($(Ox)+(Oy)$);
+\coordinate (xlen) at (+5,0);
+\coordinate (ylen) at (+0,4);
+\coordinate (wsc_x) at ($(Ox)+(4,0)$);
+\coordinate (wsc_y) at ($(Oy)+(ylen)$);
+\coordinate (Ev_x) at ($(Ox)+(xlen)$);
+\coordinate (Ev_y) at ($(Oy)+(0,1)$);
+\coordinate (Ev) at ($(Ev_x)+(Ev_y)$);
+\coordinate (Ec_x) at ($(Ox)+(xlen)$);
+\coordinate (Ec_y) at ($(Ev_y)+(0,2)$);
+\coordinate (Ec) at ($(Ec_x)+(Ec_y)$);
+\coordinate (Ef_x) at ($(Ox)+(xlen)$);
+\coordinate (Ef_y) at ($(Ev_y)+(0,0.5)$);
+\coordinate (Ef) at ($(Ef_x)+(Ef_y)$);
+
+\draw[-Stealth] (O) -- ($(O)+(xlen)$) node[at end, below] {$x$};
+\draw[-Stealth] (O) -- ($(O)+(ylen)$) node[at end, right] {$E$};
+\draw[Stealth-Stealth, blue, thick] ($(wsc_x)+(Ev_y)+(-0.2,0)$) -- ($(wsc_x)+(Ec_y)+(-0.2,0)$) node[midway, left] {$E_g$};
+\draw[red] (Ec) -- ($(wsc_x)+(Ec_y)$) node [at start, right] {$E_c$};
+\draw[red] ($(wsc_x)+(Ec_y)$) to[in=15, out=180] ($(Ox)+(Ec_y)+(0,-0.5)$);
+\draw[green] (Ev) -- ($(wsc_x)+(Ev_y)$) node [at start, right] {$E_v$};
+\draw[green] ($(wsc_x)+(Ev_y)$) to[in=15, out=180] ($(Ox)+(Ev_y)+(0,-0.5)$);
+\draw[dashed] (Ef) -- ($(Ox)+(Ef_y)$) node [at start, right] {$E_F$};
+\node[anchor=north, align=center, yshift=-0.5cm] at ($(Ox)!0.5!(xlen)$) {b) p-type};
+\draw[-Stealth, violet, thick] ($(Ox)+(Ev_y)+(0.7,-0.5)$) -- ($(Ox)+(Ec_y)+(0.7,0.0)$) node[circle, draw, at start, below, inner sep=0] {+} node[inner sep=2,circle, draw, at end, above] {-};
+\draw[-Stealth, violet, thick] ($(Ox)+(Ec_y)+(0.5,0.1)$) -- ($(Ox)+(Ec_y)+(-0.1,-0.1)$) ;
+\draw[-Stealth, violet, thick] ($(Ox)+(Ev_y)+(0.9,-0.6)$) -- ($(Ox)+(Ev_y)+(1.5,-0.5)$) ;
+
+
+\node at ($(0,0)+(ylen)+(0,-0.5)$) {$h\nu > E_g$};
+\draw[-Stealth, violet, decorate, decoration={snake, post length=1mm}] ($(0,0)+(ylen)+(-0.2,-0.75)$) -- ($(0,0)+(ylen)+(-1.5,-1.5)$);
+\draw[-Stealth, violet, decorate, decoration={snake, post length=1mm}] ($(0,0)+(ylen)+(+0.2,-0.75)$) -- ($(0,0)+(ylen)+(+1.5,-1.5)$);
+\node at ($(0,0)+(0,+0.5)$) {Electrolyte};
+
+\end{circuitikz}
+
+\input{./src/footer.tex}

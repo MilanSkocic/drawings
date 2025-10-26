@@ -1,0 +1,14 @@
+\input{./src/header.tex}
+
+\begin{circuitikz}[scale=1.0]
+\draw[->] (0,-3) -- ++(0,6);
+\node[anchor=center, rotate=90] at (-0.25,0) {Electron Energy};
+\draw[dashed, thick] (0,0) -- ++(5,0);
+\node[draw=none, anchor=north west] at (3.5,-0.2) {Fermi Level: $E_F$};
+\node[draw=none, anchor=south west, blue] at (0.1,+0.2) {Band Gap: $E_g$};
+\draw[<->, thick, blue,] (3,-1.5) -- ++(0,3);
+\node[rectangle, anchor=south, draw=red, align=center, text width=2cm, fill=red!20] at (3, 1.5) {Conduction Band};
+\node[rectangle, anchor=north, draw=green, align=center, text width=2cm, fill=green!20] at (3, -1.5) {Valence Band};
+\end{circuitikz}
+
+\input{./src/footer.tex}

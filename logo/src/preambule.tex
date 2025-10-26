@@ -1,0 +1,35 @@
+\documentclass{standalone}
+
+\usepackage{fontspec}
+\usepackage{unicode-math}
+
+\setmainfont{QTBrushStroke}
+%\setsansfont{CMU Sans Serif}
+%\setmonofont{CMU Typewriter Text}
+
+
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usetikzlibrary{shadings}
+\usepackage{graphicx}
+
+\usepackage{xcolor}
+
+\definecolor{Fortran}{HTML}{734F96}
+
+\newcommand{\lts}{20pt}         % size E and C letters in logo and name
+\newcommand{\chisize}{60pt}     % size of chi in logo
+\newcommand{\chisizetxt}{30pt}  % size of chi in name
+\newcommand{\fpc}{1.0}          % opacity for logo
+\newcommand{\scalesize}{5}      % scale factor for the scalebox
+
+\newcommand{\rcircle}{1cm}      % radius of the circle in the logo.
+\newcommand{\xname}{0.0}        % x position of the name: changed in full for placing name under the logo
+\newcommand{\yname}{0.0}        % y position of the name: changed in full for placing name under the logo
+\newcommand{\dwrect}{3.5}       % half-width of the background rectangle in full
+\newcommand{\dyn}{-2.25}         % y position of the bottom of the background rectangle
+\newcommand{\dyp}{1.1}         % y position of the top of the background rectangle
+
+\newcommand{\electrochemistry}{{\setmainfont{QtBrushStroke}\fontsize{\lts}{\lts}\selectfont E}{\setmainfont{CMU Concrete}lectrochemistry}} 
+\newcommand{\expertise}{{\fontsize{\chisizetxt}{\chisizetxt}\selectfont $\chi$}{\setmainfont{CMU Concrete}pertise }}
+\newcommand{\corrosion}{{\setmainfont{QTBrushStroke}\fontsize{\lts}{\lts}\selectfont C}{\setmainfont{CMU Concrete}orrosion}}

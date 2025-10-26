@@ -1,0 +1,39 @@
+\input{./src/header.tex}
+
+
+\begin{circuitikz}[scale=1.0]
+\coordinate (O) at (0,0);
+\coordinate (X_axis) at (8,0);
+\coordinate (Phi_axis) at (0,4);
+\coordinate (Phi_sc_x) at (0,0);
+\coordinate (Phi_sc_y) at (0,3.5);
+\coordinate (Phi_sc) at ($(Phi_sc_x)+(Phi_sc_y)$);
+\coordinate (Phi_el_x) at (8,0);
+\coordinate (Phi_el_y) at ($(Phi_sc_y)+(0,-1)$);
+\coordinate (Phi_el) at ($(Phi_el_x)+(Phi_el_y)$);
+\coordinate (wh_x) at ($(Phi_el_x)+(-2,0)$);
+\coordinate (wh_y) at (0,0);
+\coordinate (wh) at ($(wh_x)+(wh_y)$);
+\coordinate (wsc_x) at ($(Phi_sc_x)+(3,0)$);
+\coordinate (wsc_y) at (0,0);
+\coordinate (wsc) at ($(wsc_x)+(wsc_y)$);
+\coordinate (ix) at ($(wh_x)!0.5!(wsc_x)$);
+\coordinate (iy) at (0,0);
+\coordinate (i) at ($(ix)+(iy)$);
+
+\draw[-Stealth] (O) -- (X_axis) node[at end, below] {$X$};
+\draw[-Stealth] (O) -- (Phi_axis) node[midway, left, anchor=south, rotate=90] {Potential};
+
+\draw (Phi_sc) -- ++(8,0) node[at start, left] {$\Phi_{sc}$} ;
+\draw (Phi_el) -- ($(wh_x)+(Phi_el_y)$) node[near start, below] {$\Phi_{el}$};
+
+\draw[blue] (wh) -- ($(wh_x)+(Phi_sc_y)$) node[at start,below] {$w_H$};
+\draw[red] (wsc) -- ($(wsc_x)+(Phi_sc_y)$) node[at start, below] {$w_{sc}$};
+\draw[black] (i) -- ($(ix)+(Phi_sc_y)$) node[at start, below] {$0$};
+
+\draw ($(wh_x)+(Phi_el_y)$) to[in=-5, out=175] ($(Phi_sc)+(3,0)$);
+\draw[Stealth-Stealth, thick] ($(Phi_el)+(-0.5,0)$) -- ($(Phi_el)+(-0.5,1)$) node[right, midway] {$\Delta \Phi _{sc/el}$};
+
+\end{circuitikz}
+
+\input{./src/footer.tex}
