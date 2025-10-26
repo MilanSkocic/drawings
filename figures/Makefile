@@ -44,9 +44,3 @@ clean:
 	rm -rf $(BUILD_FOLDER)/*
 	rm -rf $(PDF_FOLDER)/*
 	rm -rf $(PNG_FOLDER)/*
-
-clean_tex:
-	rm -rf ${TEX_OUTPUTS}
-
-clean_py:
-	rm -rf ${PY_OUTPUTS}

@@ -1,5 +1,5 @@
 
-.PHONY: logo figures
+.PHONY: clean logo figures
 
 all: logo figures
 
@@ -9,3 +9,7 @@ logo:
 
 figures:
 	make -C figures
+
+clean:
+	make -C logo clean
+	make -C figures clean
