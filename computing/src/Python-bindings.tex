@@ -1,27 +1,73 @@
 \input{./src/header.tex}
 
-\definecolor{colorc}{rgb}{0.36, 0.54, 0.66}
-\definecolor{colorcython}{rgb}{1.0, 0.49, 0.0}
-\definecolor{colorpython}{rgb}{0.99, 0.93, 0.0}
-\definecolor{colorfortran}{HTML}{734F96}
-\definecolor{colorbinary}{rgb}{0.8, 0.8, 0.8}
+% languages
+\definecolor{CColor}{rgb}{0.36, 0.54, 0.66}
+\definecolor{CColorython}{rgb}{1.0, 0.49, 0.0}
+\definecolor{PythonColor}{rgb}{0.09, 0.45, 0.27}
+\definecolor{FortranColor}{HTML}{734F96}
+
+% States and actions
+\definecolor{BinaryColor}{rgb}{0.8, 0.8, 0.8}
+\definecolor{CompileColor}{rgb}{0.89, 0.0, 0.13}
+\definecolor{EmbedColor}{rgb}{1.0, 0.49, 0.0}
+
+\def\R{2}
+\def\L{3}
+\def\dx{6}
+\def\dy{6}
 
 \begin{circuitikz}[scale=1.0,
-                   code style/.style={draw,rectangle, text centered},
-                   binary style/.style={draw,circle, text centered},
+                   AnnotationStyle/.style={midway,above},
+                   CodeStyle/.style={draw,rectangle, text centered,minimum width=\L cm, minimum height=\L cm, fill opacity=0.5, text opacity=1.0, draw opacity=1},
+                   HeaderStyle/.style={draw,diamond,text centered,minimum width=\L cm,minimum height=\L cm,fill opacity=0.5,text opacity=1.0,draw opacity=1},
+                   BinaryStyle/.style={draw,circle, text centered, minimum size=\L cm,fill opacity=0.5, text opacity=1.0, draw opacity=1},
+                   HeaderArrow/.style={color=black, very thick, line width=0.5mm, dashed},
+                   CompileArrow/.style={color=CompileColor, very thick, ->,line width=1mm},
+                   LoadArrow/.style={->,color=PythonColor,ultra thick,line width=1.0mm},
+                   EmbedArrow/.style={->,color=EmbedColor,ultra thick,line width=1.0mm},
                    ]
     
-    \def\R{2}
-    \def\L{3}
 
     \coordinate (O) at (0,0);
+    \coordinate (HeaderCoord) at ($(O)+(-\dx,0)$);
+    \coordinate (SharedCoord) at ($(O)+(\dx,0)$);
+    \coordinate (CtypesCoord) at ($(SharedCoord)+(\dx,0)$);
+    \coordinate (PyinterpCoord) at ($(CtypesCoord)+(\dx,0)$);
+    \coordinate (CapiCoord) at ($(SharedCoord)+(0,\dy)$);
+    \coordinate (CapiExtCoord) at ($(CapiCoord)+(\dx*2,0)$);
+    
+    % legacy code
+    \node[CodeStyle,left color=CColor, right color=FortranColor,align=center] (LegacyNode) at (O) {Legacy Code \\ {\small \textit{C, C++ or Fortran}}};
 
-    \node[code style,left color=colorc, right color=colorfortran] (legacy) at (O) {Legacy Code};
-    \node[code style,fill=colorc] (header) at ($(O)+(-4,0)$) {header.c C API};
-    \node[binary style,fill=colorbinary] (shared) at ($(O)+(4,0)$) {Shared Library};
+    % header for legacy code
+    \node[HeaderStyle,fill=CColor, text centered, align=center] (HeaderNode) at (HeaderCoord) {header.c \\ {\small \textit{Exposing a C API}}};
 
-    \draw[] (header.east) -- (legacy.west);
-    \draw[] (legacy.east) -- (shared.west);
+    % Comiled lib from legacy code
+    \node[BinaryStyle,fill=BinaryColor,align=center] (SharedNode) at (SharedCoord) {Shared Library \\ {\small \textit{liblegacy.\{so,dylib,dll\}}}};
+
+    % Wrapper with ctypes
+    \node[CodeStyle, fill=PythonColor, align=center] (CtypesNode) at (CtypesCoord) {wrapper\_ctypes.py \\ {\small \textit{or CFFI or SWIG} } };
+
+    % Python interpreter
+    \node[CodeStyle, fill=PythonColor, align=center] (PyinterpNode) at (PyinterpCoord) {Python};
+
+    % Wrapper with C API
+    \node[CodeStyle, fill=CColor, align=center] (CapiNode) at (CapiCoord) {wrapper\_capi.py \\ {\small \textit{CPython C API} } };
+    \node[BinaryStyle, fill=BinaryColor, align=center] (CapiExtNode) at (CapiExtCoord) {wrapper\_capi.py \\ {\small \textit{Python Module} } };
+
+
+    % ctypes workflow
+    \draw[HeaderArrow] (HeaderNode.east) -- (LegacyNode.west);
+    \draw[CompileArrow] (LegacyNode.east) -- (SharedNode.west) node[AnnotationStyle] {COMPILE};
+    \draw[LoadArrow] (SharedNode.east) -- (CtypesNode.west) node[AnnotationStyle] {LOAD};
+    \draw[LoadArrow] (CtypesNode.east) -- (PyinterpNode.west) node[AnnotationStyle] {IMPORT};
+
+    % C API workflow
+    \draw[EmbedArrow] (SharedNode.north) -- (CapiNode.south) node[AnnotationStyle, left] {EMBED};
+    \draw[CompileArrow] (CapiNode.east) -- (CapiExtNode.west) node[midway, above] {COMPILE};
+    \draw[LoadArrow] (CapiExtNode.south) -- (PyinterpNode.north) node[midway, left] {LOAD};
+
+
     
 \end{circuitikz}
 
