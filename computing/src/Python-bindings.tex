@@ -1,0 +1,28 @@
+\input{./src/header.tex}
+
+\definecolor{colorc}{rgb}{0.36, 0.54, 0.66}
+\definecolor{colorcython}{rgb}{1.0, 0.49, 0.0}
+\definecolor{colorpython}{rgb}{0.99, 0.93, 0.0}
+\definecolor{colorfortran}{HTML}{734F96}
+\definecolor{colorbinary}{rgb}{0.8, 0.8, 0.8}
+
+\begin{circuitikz}[scale=1.0,
+                   code style/.style={draw,rectangle, text centered},
+                   binary style/.style={draw,circle, text centered},
+                   ]
+    
+    \def\R{2}
+    \def\L{3}
+
+    \coordinate (O) at (0,0);
+
+    \node[code style,left color=colorc, right color=colorfortran] (legacy) at (O) {Legacy Code};
+    \node[code style,fill=colorc] (header) at ($(O)+(-4,0)$) {header.c C API};
+    \node[binary style,fill=colorbinary] (shared) at ($(O)+(4,0)$) {Shared Library};
+
+    \draw[] (header.east) -- (legacy.west);
+    \draw[] (legacy.east) -- (shared.west);
+    
+\end{circuitikz}
+
+\input{./src/footer.tex}
