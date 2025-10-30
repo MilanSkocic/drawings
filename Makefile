@@ -1,7 +1,7 @@
 
-.PHONY: clean logo figures
+.PHONY: clean logo figures computing
 
-all: logo figures
+all: logo figures computing
 
 
 logo:
@@ -10,6 +10,10 @@ logo:
 figures:
 	make -C figures
 
+computing:
+	make -C computing
+
 clean:
 	make -C logo clean
 	make -C figures clean
+	make -C computing clean
