@@ -14,7 +14,7 @@ CONVERT_DENSITY=300
 TEX_SRC=$(wildcard ./src/PEC-*tex) $(wildcard ./src/EIS-*.tex)
 TEX_OUTPUTS=$(patsubst $(SRC_FOLDER)/%.tex, $(PNG_FOLDER)/%.png, $(TEX_SRC))
 
-PY_SRC=$(wildcard ./src/EIS-*.py)
+PY_SRC=$(wildcard ./src/EIS-*.py) $(wildcard ./src/DIA-*.py)
 PY_OUTPUTS=$(patsubst $(SRC_FOLDER)/%.py, $(PNG_FOLDER)/%.png, $(PY_SRC)) $(patsubst $(SRC_FOLDER)/%.py, $(PDF_FOLDER)/%.pdf, $(PY_SRC))
 
 
