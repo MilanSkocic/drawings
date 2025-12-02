@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Plot an example of the Nyquist representation."""
+"""Plot an example of the Nyquist plot."""
 from commons import *
 
 def main(fpath):

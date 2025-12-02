@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Plot an example of the Nyquist representation."""
+"""Plot an example of the Bode Phase representation."""
 from commons import *
 
 def main(fpath):

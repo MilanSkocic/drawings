@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Plot cosine and sine waves."""
+"""Plot an example of the Nyquist plot of a simple Randles circuit."""
 from commons import *
 
 def main(fpath):
